@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea name="description" id="description" class="form-control" required></textarea>
+            <textarea name="description" id="description" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <label for="group_id">Group</label>
@@ -20,6 +20,10 @@
                 <option value="{{ $group->id }}">{{ $group->name }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="form-group">
+            <label for="completed">Completed</label>
+            <input type="checkbox" name="completed" id="completed">
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

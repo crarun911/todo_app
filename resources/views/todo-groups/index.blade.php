@@ -1,9 +1,13 @@
-@extends('layouts.app')
+<head>
+    <link rel="stylesheet" href="{{url(css/style.css)}}">
+</head>
 
 @section('content')
 <div class="container">
     <h1>Todo Groups</h1>
-    <a href="{{ route('todo-groups.create') }}" class="btn btn-primary">Create New Group</a>
+    <!-- Button to create a new group -->
+    <a href="{{ route('todo-groups.create') }}" class="btn btn-primary mb-3">Create New Group</a>
+    
     <table class="table">
         <thead>
             <tr>

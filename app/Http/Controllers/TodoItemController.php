@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\TodoItem;
 use App\Models\TodoGroup;
 use Illuminate\Http\Request;
@@ -21,8 +22,22 @@ class TodoItemController extends Controller
 
     public function store(Request $request)
     {
-        TodoItem::create($request->all());
-        return redirect()->route('todo-items.index');
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'group_id' => 'required|exists:todo_groups,id',
+        ]);
+
+        TodoItem::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'group_id' => $request->group_id,
+            'completed' => $request->has('completed') ? true : false,
+        ]);
+
+        return redirect()->route('todo-items.index')->with('success', 'Todo Item created successfully.');
+
     }
 
     public function show(TodoItem $todoItem)
@@ -33,21 +48,38 @@ class TodoItemController extends Controller
     public function edit(TodoItem $todoItem)
     {
         $groups = TodoGroup::all();
-         return view('todo-items.edit', [
+        return view('todo-items.edit', [
             'item' => $todoItem,
             'groups' => $groups
         ]);
     }
 
     public function update(Request $request, TodoItem $todoItem)
-    {
-        $todoItem->update($request->all());
-        return redirect()->route('todo-items.index');
-    }
+    
+ {
+
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'group_id' => 'required|exists:todo_groups,id',
+    ]);
+    print_r($request->input('completed'));
+
+    $todoItem->update([
+        'title' => $request->title,
+        'description' => $request->description,
+        'group_id' => $request->group_id,
+        'completed' => $request->has('completed') ? true : false,
+    ]);
+    
+
+    return redirect()->route('todo-items.index')->with('success', 'Todo Item updated successfully.');
+}
+
 
     public function destroy(TodoItem $todoItem)
     {
         $todoItem->delete();
-        return redirect()->route('todo-items.index');
+        return redirect()->route('todo-items.index')->with('success', 'Todo Item deleted successfully.');
     }
 }

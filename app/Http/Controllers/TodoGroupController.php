@@ -20,7 +20,7 @@ class TodoGroupController extends Controller
     public function store(Request $request)
     {
         TodoGroup::create($request->all());
-        return redirect()->route('todo-groups.index');
+        return redirect()->route('todo-items.index');
     }
 
     public function show(TodoGroup $todoGroup)
