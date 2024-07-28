@@ -5,7 +5,6 @@
 @section('content')
 <div class="container">
     <h1>Todo Groups</h1>
-    <!-- Button to create a new group -->
     <a href="{{ route('todo-groups.create') }}" class="btn btn-primary mb-3">Create New Group</a>
     
     <table class="table">

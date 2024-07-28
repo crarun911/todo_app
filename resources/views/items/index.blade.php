@@ -5,11 +5,9 @@
 @section('content')
 <div class="container">
     <h1 class="my-4">Todo Items</h1>
-    <!-- Create Group button -->
-    <a href="{{ route('todo-groups.create') }}" class="btn btn-primary mb-3">Create New Group</a>
+    <a href="{{ route('todo-groups.create') }}" class="btn btn-primary mb-3">Add New Group</a>
     <br>
-    <!-- Create New Todo Item button -->
-    <a href="{{ route('todo-items.create') }}" class="btn btn-primary mb-3">Create New Todo Item</a>
+    <a href="{{ route('todo-items.create') }}" class="btn btn-primary mb-3">Add New Item</a>
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
