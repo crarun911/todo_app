@@ -11,13 +11,13 @@ class TodoItemController extends Controller
     public function index()
     {
         $items = TodoItem::all();
-        return view('todo-items.index', compact('items'));
+        return view('items.index', compact('items'));
     }
 
     public function create()
     {
         $groups = TodoGroup::all();
-        return view('todo-items.create', compact('groups'));
+        return view('items.create', compact('groups'));
     }
 
     public function store(Request $request)
@@ -33,7 +33,7 @@ class TodoItemController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'group_id' => $request->group_id,
-            'completed' => $request->has('completed') ? true : false,
+            'isCompleted' => $request->has('isCompleted') ? true : false,
         ]);
 
         return redirect()->route('todo-items.index')->with('success', 'Todo Item created successfully.');
@@ -42,13 +42,13 @@ class TodoItemController extends Controller
 
     public function show(TodoItem $todoItem)
     {
-        return view('todo-items.show', compact('todoItem'));
+        return view('items.show', compact('todoItem'));
     }
 
     public function edit(TodoItem $todoItem)
     {
         $groups = TodoGroup::all();
-        return view('todo-items.edit', [
+        return view('items.edit', [
             'item' => $todoItem,
             'groups' => $groups
         ]);
@@ -63,13 +63,12 @@ class TodoItemController extends Controller
         'description' => 'nullable|string',
         'group_id' => 'required|exists:todo_groups,id',
     ]);
-    print_r($request->input('completed'));
 
     $todoItem->update([
         'title' => $request->title,
         'description' => $request->description,
         'group_id' => $request->group_id,
-        'completed' => $request->has('completed') ? true : false,
+        'isCompleted' => $request->has('isCompleted') ? true : false,
     ]);
     
 

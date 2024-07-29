@@ -1,6 +1,3 @@
-<head>
-    <link rel="stylesheet" href="{{url(css/style.css)}}">
-</head>
 
 @section('content')
 <div class="container">

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->boolean('completed')->nullable();
+            $table->boolean('isCompleted')->nullable();
             $table->foreignId('group_id')->constrained('todo_groups')->onDelete('cascade');
             $table->timestamps();
         });

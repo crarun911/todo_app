@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit Todo Item</h1>
+    <h1>Edit Item</h1>
     <form action="{{ route('todo-items.update', $item) }}" method="POST">
         @csrf
         @method('PUT')
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="completed">Completed</label>
-            <input type="checkbox" name="completed" id="completed" {{ $item->completed ? 'checked' : '' }}>
+            <input type="checkbox" name="isCompleted" id="isCompleted" {{ $item->isCompleted ? 'checked' : '' }}>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

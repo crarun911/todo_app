@@ -9,12 +9,12 @@ class TodoGroupController extends Controller
     public function index()
     {
         $groups = TodoGroup::all();
-        return view('todo-groups.index', compact('groups'));
+        return view('groups.index', compact('groups'));
     }
 
     public function create()
     {
-        return view('todo-groups.create');
+        return view('groups.create');
     }
 
     public function store(Request $request)
@@ -25,12 +25,12 @@ class TodoGroupController extends Controller
 
     public function show(TodoGroup $todoGroup)
     {
-        return view('todo-groups.show', compact('todoGroup'));
+        return view('groups.show', compact('todoGroup'));
     }
 
     public function edit(TodoGroup $todoGroup)
     {
-        return view('todo-groups.edit', compact('todoGroup'));
+        return view('groups.edit', compact('todoGroup'));
     }
 
     public function update(Request $request, TodoGroup $todoGroup)

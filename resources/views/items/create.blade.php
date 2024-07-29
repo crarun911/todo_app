@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Create New Todo Item</h1>
+    <h1>Create New Item</h1>
     <form action="{{ route('todo-items.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="completed">Completed</label>
-            <input type="checkbox" name="completed" id="completed">
+            <input type="checkbox" name="completed" id="isCompleted">
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>

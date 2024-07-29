@@ -9,7 +9,7 @@ class TodoItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'completed', 'group_id'];
+    protected $fillable = ['title', 'description', 'isCompleted', 'group_id'];
 
     public function group()
     {
