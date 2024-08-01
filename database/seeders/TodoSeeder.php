@@ -10,23 +10,21 @@ use App\Models\TodoItem;
 
 class TodoSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+   
     public function run(): void
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $group = TodoGroup::create([
                 'name' => $faker->word
             ]);
 
-            for ($j = 0; $j < 10; $j++) {
+            for ($j = 0; $j < 20; $j++) {
                 TodoItem::create([
                     'title' => $faker->sentence,
                     'description' => $faker->paragraph,
-                    'completed' => $faker->boolean,
+                    'isCompleted' => $faker->boolean,
                     'group_id' => $group->id
                 ]);
             }
